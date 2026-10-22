@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+work/
+
+# Runtime content is local and should not overwrite a deployed site.
+outputs/site/data/site-state.json
+outputs/site/data/*.tmp
+outputs/site/media/*
+!outputs/site/media/.gitkeep
+
