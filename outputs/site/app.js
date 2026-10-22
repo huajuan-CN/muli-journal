@@ -7,6 +7,7 @@
   const SITE_KEY = "muli-site-settings-v1";
   const FEED_CACHE_KEY = "muli-one-feed-v1";
   const API_BASE = location.protocol === "file:" ? "http://127.0.0.1:8080" : "";
+  const STATIC_HOSTING = location.hostname.endsWith(".github.io");
   const DB_NAME = "muli-journal";
   const DB_STORE = "covers";
   const FALLBACK_COVER = "assets/images/soft-geometry.svg";
@@ -1136,6 +1137,12 @@
 
   async function loadFeed(force = false) {
     if (feedRequest) return feedRequest;
+    if (STATIC_HOSTING) {
+      renderFeed(FALLBACK_FEED, { cached: true });
+      el.feedStatus.classList.add("is-error");
+      el.feedStatus.innerHTML = "<i></i>RSS 静态快照";
+      return;
+    }
     el.feedRefresh.classList.add("is-loading");
     el.feedStatus.classList.remove("is-error");
     el.feedStatus.innerHTML = "<i></i>正在获取「ONE」";
@@ -1380,6 +1387,10 @@
   }
 
   async function pushStateToServer({ silent = false } = {}) {
+    if (STATIC_HOSTING) {
+      setServerStatus("GitHub Pages 静态模式：内容保存在当前浏览器");
+      return false;
+    }
     try {
       const response = await fetch(apiUrl("/api/state"), {
         method: "PUT",
@@ -1411,6 +1422,11 @@
   }
 
   async function hydrateFromServer() {
+    if (STATIC_HOSTING) {
+      serverAvailable = false;
+      setServerStatus("GitHub Pages 静态模式：内容保存在当前浏览器");
+      return false;
+    }
     try {
       const response = await fetch(apiUrl("/api/state"), { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -1444,6 +1460,7 @@
   }
 
   async function refreshFromServer() {
+    if (STATIC_HOSTING) return;
     if (document.querySelector(".modal-layer.is-open")) return;
     try {
       const response = await fetch(apiUrl("/api/state"), { cache: "no-store" });
@@ -1467,6 +1484,10 @@
   }
 
   function scheduleSettingsSync() {
+    if (STATIC_HOSTING) {
+      setServerStatus("GitHub Pages 静态模式：内容保存在当前浏览器");
+      return;
+    }
     window.clearTimeout(settingsSyncTimer);
     setServerStatus("正在保存到本机后台…");
     settingsSyncTimer = window.setTimeout(async () => {
