@@ -2,6 +2,8 @@
 
 一个不依赖构建工具和后端的静态博客原型，视觉参考了作品集站常见的编辑式排版和大图网格。
 
+网页版：<https://huajuan-cn.github.io/muli-journal/>
+
 ## 启动
 
 在 Finder 中双击 `start.command`，或在这个目录执行：
