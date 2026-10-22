@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eee9dc"/>
+      <stop offset="1" stop-color="#cdc5b7"/>
+    </linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#171716"/>
+      <stop offset=".42" stop-color="#676762"/>
+      <stop offset=".55" stop-color="#1a1a18"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .075"/></feComponentTransfer>
+    </filter>
+    <filter id="shadow"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#paper)"/>
+  <path d="M0 1091c361-95 780-86 1200 0v409H0Z" fill="#c9c0b1"/>
+  <ellipse cx="601" cy="1254" rx="404" ry="98" fill="#3e3933" opacity=".18" filter="url(#shadow)"/>
+  <path d="M317 442c0-105 84-189 189-189h186c105 0 189 84 189 189v354c0 54-44 98-98 98H415c-54 0-98-44-98-98Z" fill="none" stroke="url(#chrome)" stroke-width="48"/>
+  <path d="M355 794h490c35 0 64 29 64 64v145c0 35-29 64-64 64H355c-35 0-64-29-64-64V858c0-35 29-64 64-64Z" fill="#b66e45"/>
+  <path d="M355 794h490c35 0 64 29 64 64v27H291v-27c0-35 29-64 64-64Z" fill="#e49b6b"/>
+  <path d="M341 1059l-42 262M923 1059l42 262" stroke="url(#chrome)" stroke-width="20" stroke-linecap="round"/>
+  <path d="M515 440v324M747 440v324" stroke="#242421" stroke-width="8" opacity=".55"/>
+  <circle cx="631" cy="892" r="11" fill="#f1c798"/>
+  <path d="M132 166h322M132 189h177" stroke="#272724" stroke-width="2" opacity=".45"/>
+  <rect width="1200" height="1500" filter="url(#grain)" opacity=".68"/>
+</svg>
