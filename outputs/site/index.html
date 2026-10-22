@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090a0b">
+  <meta name="description" content="暮里是一份关于视觉、城市与日常观察的本地博客。">
+  <title>暮里 MULI — 把日常折成作品</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1b18'/%3E%3Cpath d='M16 45V19h8l8 13 8-13h8v26h-8V31l-8 12-8-12v14z' fill='%23f3f0e9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor-label" aria-hidden="true">READ ↗</div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="暮里首页">
+      <span class="brand-mark" data-site="brandMark">M:</span>
+      <span class="brand-cn" data-site="brandName">暮里</span>
+      <sup>®</sup>
+    </a>
+
+    <div class="header-actions">
+      <button class="icon-button search-trigger" type="button" aria-label="搜索文章" title="搜索 /">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.4 4.4"/></svg>
+      </button>
+      <button class="menu-trigger" id="menu-trigger" type="button" aria-expanded="false" aria-controls="floating-menu">
+        <span class="menu-grid-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span data-site="menuLabel">菜单</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg>
+      </button>
+      <button class="write-button open-composer" type="button">
+        <span class="write-dot"></span>
+        <span data-site="writeLabel">写一篇</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="floating-menu" id="floating-menu" aria-hidden="true">
+      <div class="floating-menu-head">
+        <span data-site="menuEyebrow">目录</span>
+        <span data-site="menuEdition">MULI / 2026</span>
+      </div>
+      <nav class="popup-nav" aria-label="弹出菜单">
+        <button type="button" data-scroll-target="works"><span>01</span><strong data-site="navWorks">作品</strong><em data-site="navWorksEn">Selected work</em></button>
+        <button type="button" data-scroll-target="journal"><span>02</span><strong data-site="navJournal">日志</strong><em data-site="navJournalEn">Notes</em></button>
+        <button type="button" data-scroll-target="about"><span>03</span><strong data-site="navAbout">关于</strong><em data-site="navAboutEn">About</em></button>
+      </nav>
+      <div class="floating-menu-actions">
+        <button class="open-admin" type="button" data-admin-view-target="overview">
+          <span data-site="adminLabel">后台</span>
+          <small><b id="menu-post-count">06</b> 篇</small>
+        </button>
+        <button class="open-composer" type="button">
+          <span data-site="menuPublish">发布新文章</span>
+          <small>＋</small>
+        </button>
+        <button class="menu-search" type="button">
+          <span data-site="menuSearch">搜索内容</span>
+          <small>/</small>
+        </button>
+        <button class="theme-toggle menu-theme-toggle" type="button">
+          <span data-site="menuTheme">切换明暗</span>
+          <small class="theme-label">Light</small>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-stage">
+        <img class="hero-stage-image" src="assets/images/coastline.svg" alt="海岸与雾的抽象视觉">
+        <div class="hero-vignette" aria-hidden="true"></div>
+        <div class="hero-stage-top">
+          <span data-site="heroKicker">Independent journal · 2026</span>
+          <span data-site="heroIssue">NO.05</span>
+        </div>
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            <span data-site="heroTitle1">把日常</span>
+            <span><span data-site="heroTitle2">折成作品</span><span class="orange-dot">。</span></span>
+          </h1>
+          <div class="hero-bottom">
+            <p data-site="heroIntro">视觉、城市与日常观察。</p>
+            <a class="scroll-cue" href="#works">
+              <span data-site="heroBrowse">浏览全部</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-side" aria-label="精选作品">
+        <a class="hero-feature-card" href="#post=soft-geometry" data-post-id="soft-geometry" aria-label="阅读《柔和的秩序》">
+          <img src="assets/images/soft-geometry.svg" alt="柔和几何的抽象静物">
+          <div class="hero-feature-copy">
+            <span data-site="heroFeatureMeta">Selected / 01</span>
+            <strong data-site="heroFeatureTitle">柔和的秩序</strong>
+            <small data-site="heroFeatureText">陶土、纸张与午后的光</small>
+          </div>
+        </a>
+        <div class="hero-meta-card">
+          <div>
+            <span data-site="heroMetaLabel">本期目录</span>
+            <strong>06</strong>
+          </div>
+          <div class="hero-meta-tags" data-site="heroMetaTags">视觉 · 日常 · 手记</div>
+          <a href="#works"><span data-site="heroMetaAction">查看全部作品</span> <span>↘</span></a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="one-feed-section" id="one-feed" aria-labelledby="one-feed-title">
+      <div class="one-feed-heading">
+        <div>
+          <p class="eyebrow" data-site="feedEyebrow">ONE · DAILY FEED</p>
+          <h2 id="one-feed-title" data-site="feedTitle">今日一页</h2>
+        </div>
+        <div class="one-feed-actions">
+          <span class="feed-status" id="feed-status"><i></i>正在连接 RSS</span>
+          <button class="feed-refresh" id="feed-refresh" type="button" aria-label="刷新 RSS">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="one-feed-grid" id="one-feed-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="works-section" id="works" aria-labelledby="works-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" data-site="worksEyebrow">Selected works / archive</p>
+          <h2 id="works-title"><span data-site="worksTitle">最近发布</span> <span class="count-badge" id="post-count">06</span></h2>
+        </div>
+        <button class="manage-inline open-admin" data-admin-view-target="articles" type="button"><span data-site="manageLabel">管理文章</span> <span>↗</span></button>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filters" role="group" aria-label="按分类筛选">
+          <button class="filter-chip active" type="button" data-filter="全部"><span data-site="filterAll">全部</span></button>
+          <button class="filter-chip" type="button" data-filter="视觉"><span data-site="filterVisual">视觉</span></button>
+          <button class="filter-chip" type="button" data-filter="日常"><span data-site="filterDaily">日常</span></button>
+          <button class="filter-chip" type="button" data-filter="手记"><span data-site="filterNotes">手记</span></button>
+        </div>
+        <div class="view-actions">
+          <button class="text-button" id="shuffle-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h3.5c5 0 6 10 11 10H21M18 14l3 3-3 3M3 17h3.5c1.8 0 3-1.3 4.1-3M14.5 7H21M18 4l3 3-3 3"/></svg>
+            <span data-site="shuffleLabel">随机漫游</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="works-grid" id="works-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span>∅</span>
+        <h3 data-site="emptyTitle">这个分类还没有内容</h3>
+        <p data-site="emptyText">换个筛选，或发布第一篇。</p>
+      </div>
+    </section>
+
+    <section class="journal-strip" id="journal">
+      <div class="journal-label">
+        <span class="eyebrow" data-site="journalEyebrow">From the notebook</span>
+        <h2><span data-site="journalTitle1">随时，记下</span><br><span data-site="journalTitle2">一个念头。</span></h2>
+      </div>
+      <div class="journal-quote">
+        <span class="quote-mark">“</span>
+        <p data-site="journalQuote">为某个瞬间，多停留一分钟。</p>
+        <span class="quote-meta" data-site="journalMeta">— 编辑手记 / 10.2026</span>
+      </div>
+      <button class="round-write open-composer" type="button" aria-label="开始写一篇">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 25 24 8M13 8h11v11"/></svg>
+      </button>
+    </section>
+
+    <section class="about-section" id="about">
+      <p class="eyebrow" data-site="aboutEyebrow">About this journal</p>
+      <div class="about-grid">
+        <h2><span data-site="aboutTitle1">暮里是一场</span><br><span data-site="aboutTitle2">持续的采集。</span></h2>
+        <div class="about-copy">
+          <p data-site="aboutText">设计、影像与日常片段。内容保存在当前浏览器。</p>
+          <div class="about-actions">
+            <button class="text-button open-composer" type="button"><span data-site="aboutNew">开始记录</span> <span>↗</span></button>
+            <button class="text-button open-admin" data-admin-view-target="articles" type="button"><span data-site="aboutManage">文章管理</span> <span>↗</span></button>
+            <button class="text-button" id="export-button" type="button"><span data-site="aboutExport">导出备份</span> <span>↓</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <span data-site="footerBrand">暮里 MULI</span>
+      <span data-site="footerTagline">把日常折成作品。</span>
+    </div>
+    <div class="footer-meta">
+      <span data-site="footerNote">LOCAL-FIRST JOURNAL</span>
+      <span data-site="footerCopyright">© 2026</span>
+      <button id="reset-button" class="reset-button" type="button" data-site="footerReset">恢复示例内容</button>
+    </div>
+  </footer>
+
+  <div class="modal-layer reader-layer" id="reader-modal" aria-hidden="true">
+    <div class="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+      <div class="reader-toolbar">
+        <span class="reader-counter" id="reader-counter">01 / 06</span>
+        <button class="close-button" data-close="reader" type="button" aria-label="关闭文章">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+        </button>
+      </div>
+      <div class="reader-hero">
+        <img id="reader-image" src="" alt="">
+        <div class="reader-title-wrap">
+          <p class="eyebrow" id="reader-category"></p>
+          <h2 id="reader-title"></h2>
+          <p class="reader-deck" id="reader-excerpt"></p>
+        </div>
+      </div>
+      <div class="reader-content">
+        <div class="reader-meta">
+          <span id="reader-date"></span>
+          <span id="reader-tags"></span>
+        </div>
+        <div class="reader-body" id="reader-body"></div>
+      </div>
+      <div class="reader-nav">
+        <button class="reader-arrow" id="prev-post" type="button">
+          <span>← 上一篇</span>
+          <strong id="prev-post-title"></strong>
+        </button>
+        <button class="reader-arrow next" id="next-post" type="button">
+          <span>下一篇 →</span>
+          <strong id="next-post-title"></strong>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-layer composer-layer" id="composer-modal" aria-hidden="true">
+    <div class="composer" role="dialog" aria-modal="true" aria-labelledby="composer-title">
+      <header class="composer-header">
+        <div>
+          <p class="eyebrow" id="composer-eyebrow">New entry</p>
+          <h2 id="composer-title">发布一篇新作品</h2>
+        </div>
+        <div class="composer-header-actions">
+          <span class="autosave-status" id="autosave-status">草稿会自动保存</span>
+          <button class="close-button" data-close="composer" type="button" aria-label="关闭编辑器">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <form class="composer-form" id="composer-form">
+        <div class="composer-fields">
+          <label class="field field-title">
+            <span>标题</span>
+            <input id="post-title-input" name="title" type="text" maxlength="52" placeholder="给这篇文章一个名字" required>
+          </label>
+
+          <label class="field">
+            <span>一句话简介</span>
+            <input id="post-excerpt-input" name="excerpt" type="text" maxlength="96" placeholder="用一句话说明这组内容">
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span>分类</span>
+              <select id="post-category-input" name="category">
+                <option value="视觉">视觉</option>
+                <option value="日常">日常</option>
+                <option value="手记">手记</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>标签</span>
+              <input id="post-tags-input" name="tags" type="text" maxlength="60" placeholder="摄影, 城市, 灵感">
+            </label>
+          </div>
+
+          <label class="field">
+            <span>正文</span>
+            <textarea id="post-body-input" name="body" rows="11" maxlength="5000" placeholder="从这里开始记录。空行会自动分段。"></textarea>
+          </label>
+
+          <div class="upload-field">
+            <span class="field-label">封面图片</span>
+            <label class="drop-zone" id="drop-zone" for="cover-input">
+              <input id="cover-input" type="file" accept="image/*">
+              <span class="drop-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
+              </span>
+              <strong>拖入图片，或点击选择</strong>
+              <small>支持 JPG、PNG、WEBP，建议小于 10MB</small>
+            </label>
+          </div>
+        </div>
+
+        <aside class="composer-preview">
+          <div class="preview-heading">
+            <span>实时预览</span>
+            <span id="preview-date"></span>
+          </div>
+          <div class="preview-card">
+            <div class="preview-image" id="preview-image">
+              <span>COVER IMAGE</span>
+              <button id="remove-cover" type="button" aria-label="移除封面" hidden>×</button>
+            </div>
+            <div class="preview-copy">
+              <span id="preview-category">视觉</span>
+              <h3 id="preview-title">未命名作品</h3>
+              <p id="preview-excerpt">一句话简介会出现在这里。</p>
+            </div>
+          </div>
+          <div class="composer-submit-wrap">
+            <button class="publish-button" type="submit">
+              <span class="publish-label">立即发布</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+            <p>内容只保存在这个浏览器中，不会上传到服务器。</p>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-layer search-layer" id="search-modal" aria-hidden="true">
+    <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-heading">
+      <div class="search-top">
+        <p class="eyebrow" id="search-heading">Search the journal</p>
+        <button class="close-button" data-close="search" type="button" aria-label="关闭搜索">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+        </button>
+      </div>
+      <label class="search-input-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.4 4.4"/></svg>
+        <input id="search-input" type="search" autocomplete="off" placeholder="搜索标题、标签或内容…">
+        <kbd>ESC</kbd>
+      </label>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <div class="modal-layer manager-layer admin-layer" id="admin-modal" aria-hidden="true">
+    <div class="admin-shell" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+      <aside class="admin-sidebar">
+        <div class="admin-brand">
+          <span class="brand-mark" data-site="brandMark">M:</span>
+          <div>
+            <strong data-site="brandName">暮里</strong>
+            <small>内容后台</small>
+          </div>
+        </div>
+        <nav class="admin-nav" aria-label="后台导航">
+          <button class="active" type="button" data-admin-panel="overview">
+            <span>概览</span><small>Dashboard</small>
+          </button>
+          <button type="button" data-admin-panel="articles">
+            <span>文章管理</span><small><b id="side-post-count">06</b> 篇</small>
+          </button>
+          <button type="button" data-admin-panel="settings">
+            <span>站点文字</span><small>Content</small>
+          </button>
+          <button type="button" data-admin-panel="data">
+            <span>数据与发布</span><small>Data</small>
+          </button>
+        </nav>
+        <div class="admin-sidebar-footer">
+          <button class="admin-view-site" type="button" data-close="admin">返回前台 <span>↗</span></button>
+          <span>LOCAL CMS · V1</span>
+        </div>
+      </aside>
+
+      <div class="admin-main">
+      <header class="manager-header">
+        <div>
+          <p class="eyebrow" id="admin-eyebrow">Dashboard</p>
+          <h2 id="admin-title">后台概览</h2>
+        </div>
+        <div class="manager-header-actions">
+          <button class="manager-new open-composer" type="button">＋ 新建文章</button>
+          <button class="close-button" data-close="admin" type="button" aria-label="关闭后台">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-view" data-admin-view="overview">
+        <div class="admin-stat-grid">
+          <article class="admin-stat">
+            <span>全部文章</span>
+            <strong id="admin-total-count">06</strong>
+            <small>当前站点内容</small>
+          </article>
+          <article class="admin-stat">
+            <span>本地文章</span>
+            <strong id="admin-local-count">00</strong>
+            <small>可以编辑和删除</small>
+          </article>
+          <article class="admin-stat">
+            <span>RSS 内容</span>
+            <strong id="admin-feed-count">00</strong>
+            <small>来自「ONE · 一个」</small>
+          </article>
+        </div>
+        <div class="admin-overview-grid">
+          <section class="admin-card">
+            <div class="admin-card-head">
+              <h3>最近文章</h3>
+              <button type="button" data-admin-panel="articles">查看全部</button>
+            </div>
+            <div class="admin-recent-list" id="admin-recent-list"></div>
+          </section>
+          <section class="admin-card admin-quick">
+            <div class="admin-card-head"><h3>快捷操作</h3></div>
+            <button class="open-composer" type="button"><span>写一篇新文章</span><b>↗</b></button>
+            <button type="button" data-admin-panel="settings"><span>编辑站点文字</span><b>↗</b></button>
+            <button type="button" id="admin-backup-button"><span>导出数据备份</span><b>↓</b></button>
+          </section>
+        </div>
+      </div>
+
+      <div class="admin-view" data-admin-view="articles" hidden>
+        <div class="manager-toolbar">
+          <div class="manager-tabs" role="group" aria-label="文章范围">
+            <button class="manager-tab active" type="button" data-manager-filter="all">全部文章 <b id="all-post-count">6</b></button>
+            <button class="manager-tab" type="button" data-manager-filter="local">我的文章 <b id="local-post-count">0</b></button>
+          </div>
+          <label class="manager-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.4 4.4"/></svg>
+            <input id="manager-search-input" type="search" placeholder="筛选文章…">
+          </label>
+        </div>
+        <div class="manager-list" id="manager-list"></div>
+        <div class="manager-empty" id="manager-empty" hidden>
+          <p>还没有本地文章。</p>
+          <button class="open-composer" type="button">发布第一篇</button>
+        </div>
+      </div>
+
+      <div class="admin-view" data-admin-view="settings" hidden>
+        <div class="admin-settings-intro">
+          <p>修改后立即预览，并自动保存在当前浏览器。</p>
+          <span id="settings-save-status">所有文字均已保存</span>
+        </div>
+        <form class="settings-form" id="site-settings-form">
+          <div class="settings-groups" id="site-settings-groups"></div>
+        </form>
+      </div>
+
+      <div class="admin-view" data-admin-view="data" hidden>
+        <div class="admin-data-grid">
+          <section class="admin-data-card">
+            <span class="eyebrow">Backup</span>
+            <h3>导出文章与图片</h3>
+            <p>生成一个包含本地文章、正文和封面数据的 JSON 备份文件。</p>
+            <button class="admin-action-button" id="admin-data-backup" type="button">导出完整备份 <span>↓</span></button>
+            <button class="admin-action-button" id="admin-import-button" type="button">导入备份文件 <span>↑</span></button>
+            <input id="admin-import-input" type="file" accept="application/json,.json" hidden>
+          </section>
+          <section class="admin-data-card">
+            <span class="eyebrow">Reset copy</span>
+            <h3>恢复默认文字</h3>
+            <p>只恢复站点文案设置，不会删除已经发布的文章。</p>
+            <button class="admin-action-button" id="settings-reset-button" type="button">恢复默认文案</button>
+          </section>
+          <section class="admin-data-card">
+            <span class="eyebrow">Local content</span>
+            <h3>清空本地文章</h3>
+            <p>删除当前浏览器内创建的文章与图片，示例内容会保留。</p>
+            <button class="admin-action-button danger" id="admin-reset-button" type="button">清空本地内容</button>
+          </section>
+          <section class="admin-data-card">
+            <span class="eyebrow">Server sync</span>
+            <h3>跨浏览器同步</h3>
+            <p>通过本机后台保存文字与文章，Safari、Edge 和本地页面可读取同一份内容。</p>
+            <code id="server-sync-status">正在连接本地服务…</code>
+            <button class="admin-action-button" id="server-sync-button" type="button">立即同步 <span>↻</span></button>
+          </section>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
